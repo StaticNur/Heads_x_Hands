@@ -27,17 +27,28 @@ public class Main {
             switch (attack) {
                 case 1:
                     uron_gemer = nik.Attack(dragon.getDefense());
-                    if (dragon.getHealth() > 0) {
+                    if (uron_gemer == 100) {
+                        //break; здесь мы окажемся когда нет успеха в атаке
+                    } else if (dragon.getHealth() > 0) {
                         dragon.setHealth(dragon.getHealth() - uron_gemer); //наносим урон
+                    } else {
+                        flag = false;
                     }
+
                     uron_dragon = dragon.Attack(nik.getDefense());
-                    if (nik.getHealth() > 0) {
+                    if (uron_dragon == 100) {
+                        //break; здесь мы окажемся когда нет успеха в атаке
+                    } else if (nik.getHealth() > 0) {
                         nik.setHealth(nik.getHealth() - uron_dragon); //наносим урон
+                    } else {
+                        flag = false;
                     }
                     break;
                 case 2:
                     uron_dragon = dragon.Attack(nik.getDefense());
-                    if (nik.getHealth() > 0) {
+                    if (uron_dragon == 100) {
+                        //break; здесь мы окажемся когда нет успеха в атаке
+                    } else if (nik.getHealth() > 0) {
                         nik.setHealth(nik.getHealth() - uron_dragon); //наносим урон
                     } else {
                         flag = false;
@@ -57,7 +68,7 @@ public class Main {
             } else {//в случаи промоха или нажатии НЕТ
                 System.out.println("Урон нанесенный игроком равна: " + uron_gemer);
             }
-            System.out.println("Количество исцелении осталось:  " + (3 - nik.getTry_heal()));
+            System.out.println("Количество исцелении осталось:  " + (4 - nik.getTry_heal()));
             System.out.println("\nМонстр:");
             System.out.println("Здоровье монстра равно: " + dragon.getHealth());
             System.out.println("Защита монстра равна: " + dragon.getDefense());
@@ -68,7 +79,7 @@ public class Main {
                 System.out.println("Урон нанесенный монстром равна: " + uron_dragon);
             }
             System.out.println("-------------------------------------------------------------------------------");
-            if (nik.getTry_heal() < 3) {
+            if (nik.getTry_heal() < 4) {
                 System.out.println("Исцелить игрока?\tДа - 1\tНет - 2");
                 flag = true;
                 do {
